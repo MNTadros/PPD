@@ -1,0 +1,42 @@
+# Java
+/target/
+*.class
+*.jar
+*.war
+*.iml
+*.log
+
+# Maven
+.mvn/
+!**/mvnw
+!**/mvnw.cmd
+
+# IntelliJ / VSCode
+.idea/
+*.iws
+*.iml
+*.ipr
+.vscode/
+
+# OS-generated
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Tailwind Output
+src/main/resources/static/css/output.css
+
+# Spring Boot specific
+*.db
+*.h2.db
+*.sqlite
+*.mv.db
+
+# Environment files
+.env
