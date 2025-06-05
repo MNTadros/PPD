@@ -2,13 +2,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.example</groupId>
-    <artifactId>demo</artifactId>
+    <groupId>com.projectplanner.dashboard</groupId>
+    <artifactId>dashboard</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>demo</name>
-    <description>Demo project for Spring Boot with TailwindCSS</description>
+    <name>PPD (Project Planner Dashboard)</name>
+    <description>A Java Spring Boot dashboard application for project planning, featuring a web interface built with Thymeleaf and styled using TailwindCSS.</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

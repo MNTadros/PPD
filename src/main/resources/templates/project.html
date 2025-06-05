@@ -19,38 +19,53 @@
                 <a href="#" class="block px-4 py-2 rounded hover:bg-blue-100">Settings</a>
             </nav>
         </aside>
+
         <main class="flex-1 p-6 overflow-y-auto">
             <header class="flex items-center justify-between mb-6">
                 <h2 class="text-3xl font-semibold">Projects</h2>
             </header>
 
-            <form th:action="@{/projects}" method="post" class="mb-6 flex flex-wrap items-center gap-4">
+            <form th:action="@{/projects}" method="post" class="mb-6 flex flex-wrap gap-4 items-center">
                 <input type="text" name="name" placeholder="Project Name" required
                     class="flex-1 min-w-[12rem] px-4 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-
                 <input type="text" name="description" placeholder="Description" required
                     class="flex-1 min-w-[16rem] px-4 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <input type="text" name="tags" placeholder="Tags (comma separated)"
+                    class="flex-1 min-w-[14rem] px-4 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <input type="text" name="people" placeholder="People (comma separated)"
+                    class="flex-1 min-w-[14rem] px-4 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
 
                 <button type="submit"
-                    class="px-5 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition duration-200">
+                    class="flex items-center gap-2 px-6 py-2.5 bg-blue-600 text-white font-semibold rounded-full shadow hover:bg-blue-700 hover:shadow-md transition duration-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+                    </svg>
                     Add Project
                 </button>
+
             </form>
 
-            <div class="bg-white rounded shadow p-4">
-                <table class="min-w-full">
+            <div class="bg-white rounded shadow p-4 overflow-x-auto">
+                <table class="min-w-full table-auto border border-gray-200">
                     <thead>
-                        <tr>
-                            <th class="text-left py-2">ID</th>
-                            <th class="text-left py-2">Name</th>
-                            <th class="text-left py-2">Description</th>
+                        <tr class="bg-gray-100 text-left text-sm font-semibold text-gray-700">
+                            <th class="px-4 py-2 border">ID</th>
+                            <th class="px-4 py-2 border">Name</th>
+                            <th class="px-4 py-2 border">Description</th>
+                            <th class="px-4 py-2 border">Tags</th>
+                            <th class="px-4 py-2 border">People</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="project : ${projects}">
-                            <td th:text="${project.id}" class="py-2"></td>
-                            <td th:text="${project.name}" class="py-2"></td>
-                            <td th:text="${project.description}" class="py-2"></td>
+                        <tr th:each="project : ${projects}" class="hover:bg-gray-50">
+                            <td th:text="${project.id}" class="px-4 py-2 border"></td>
+                            <td th:text="${project.name}" class="px-4 py-2 border"></td>
+                            <td th:text="${project.description}" class="px-4 py-2 border"></td>
+                            <td th:text="${#strings.arrayJoin(project.tags, ', ')}"
+                                class="px-4 py-2 border text-sm text-gray-600"></td>
+                            <td th:text="${#strings.arrayJoin(project.people, ', ')}"
+                                class="px-4 py-2 border text-sm text-gray-600"></td>
                         </tr>
                     </tbody>
                 </table>
