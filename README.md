@@ -137,13 +137,13 @@ http://localhost:8080/
 
 ## Screenshots
 
-![Home Overview](src\main\resources\static\homepage.JPG)  
+![Home Overview](https://github.com/MNTadros/PPD/blob/main/src/main/resources/static/homepage.JPG) 
 *Overview Dashboard (with sidebar, quick links, and metrics)*
 
-![Projects Page](src\main\resources\static\projectpage.JPG)  
+![Projects Page](https://github.com/MNTadros/PPD/blob/main/src/main/resources/static/projectpage.JPG)
 *Projects Page (create & list projects; evenly distributed table columns)*
 
-![Reports Page](src\main\resources\static\reportpage.JPG)  
+![Reports Page](https://github.com/MNTadros/PPD/blob/main/src/main/resources/static/reportpage.JPG) 
 *Reports Page (list & file new reports; choose existing project)*
 
 ---
