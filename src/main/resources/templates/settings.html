@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    rel="stylesheet"
+  />
+</head>
+<body class="bg-gray-100 min-h-screen font-sans text-gray-800">
+  <div class="flex h-screen">
+
+    <aside class="w-48 h-screen bg-white shadow-md p-6 flex flex-col">
+      <div class="flex items-center mb-8">
+
+        <img th:src="@{PPD_logo.png}" alt="PPD Logo" class="w-8 h-8 mr-3 object-contain" />
+        <h1 class="text-2xl font-bold text-blue-600">PPD</h1>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="flex-1 space-y-3">
+        <!-- Home -->
+        <a href="/"
+          class="flex items-center px-4 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7m-9 2v8m0 0H5a2 2 0 01-2-2v-4m0 0h14a2 2 0 012 2v4a2 2 0 01-2 2h-6m-4 0v-8" />
+          </svg>
+          <span class="font-medium">Home</span>
+        </a>
+
+        <!-- Projects -->
+        <a href="/projects"
+          class="flex items-center px-4 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16v16H4V4zm2 2v12h12V6H6z" />
+          </svg>
+          <span class="font-medium">Projects</span>
+        </a>
+
+        <!-- Reports -->
+        <a href="/reports"
+          class="flex items-center px-4 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M8 16h8M8 12h8M8 8h5m2-3H6a2 2 0 00-2 2v14l4-4h10a2 2 0 002-2V5a2 2 0 00-2-2z" />
+          </svg>
+          <span class="font-medium">Reports</span>
+        </a>
+
+        <!-- Settings -->
+        <a href="/settings"
+          class="flex items-center px-4 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 4.354a8 8 0 016.928 4.49l.93.93a2 2 0 010 2.828l-1.414 1.414a2 2 0 01-2.828 0l-.93-.93A8 8 0 0112 19.646a8 8 0 01-6.928-4.49l-.93-.93a2 2 0 010-2.828l1.414-1.414a2 2 0 012.828 0l.93.93A8 8 0 0112 4.354z" />
+            <circle cx="12" cy="12" r="3" stroke="none" />
+          </svg>
+          <span class="font-medium">Settings</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="flex-1 overflow-y-auto px-4 py-6">
+      <h2 class="text-3xl font-semibold mb-4">Settings</h2>
+
+      <form th:action="@{/settings}" method="post" class="space-y-6 max-w-xl">
+        <section>
+          <h3 class="text-xl font-medium mb-3">Profile</h3>
+          <div class="space-y-4">
+            <div>
+              <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter your username"
+                class="w-full px-2 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+                class="w-full px-2 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3 class="text-xl font-medium mb-3">Preferences</h3>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <input
+                id="darkMode"
+                name="darkMode"
+                type="checkbox"
+                class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+              />
+              <label for="darkMode" class="ml-3 block text-sm font-medium text-gray-700">
+                Enable Dark Mode
+              </label>
+            </div>
+            <div class="flex items-center">
+              <input
+                id="emailNotifications"
+                name="emailNotifications"
+                type="checkbox"
+                class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+              />
+              <label for="emailNotifications" class="ml-3 block text-sm font-medium text-gray-700">
+                Receive Email Notifications
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3 class="text-xl font-medium mb-3">Security</h3>
+          <div class="space-y-4">
+            <div>
+              <label for="currentPassword" class="block text-sm font-medium text-gray-700 mb-1">Current Password</label>
+              <input
+                type="password"
+                id="currentPassword"
+                name="currentPassword"
+                placeholder="••••••••"
+                class="w-full px-2 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label for="newPassword" class="block text-sm font-medium text-gray-700 mb-1">New Password</label>
+              <input
+                type="password"
+                id="newPassword"
+                name="newPassword"
+                placeholder="••••••••"
+                class="w-full px-2 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-1">Confirm New Password</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="••••••••"
+                class="w-full px-2 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+          </div>
+        </section>
+
+        <div class="text-right">
+          <button
+            type="submit"
+            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition font-medium"
+          >
+            Save Changes
+          </button>
+        </div>
+      </form>
+    </main>
+  </div>
+</body>
+</html>

@@ -2,53 +2,147 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="/css/output.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Planner Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
 </head>
 
 <body class="bg-gray-100 min-h-screen font-sans text-gray-800">
-    <div class="flex h-screen">
-        <!-- Sidebar -->
-        <aside class="w-64 bg-white shadow-md p-4">
-            <h1 class="text-2xl font-bold text-blue-600 mb-6">Dashboard</h1>
-            <nav class="space-y-2">
-                <a href="#" class="block px-4 py-2 rounded hover:bg-blue-100">Home</a>
-                <a href="/projects" class="block px-4 py-2 rounded hover:bg-blue-100">Projects</a>
-                <a href="#" class="block px-4 py-2 rounded hover:bg-blue-100">Reports</a>
-                <a href="#" class="block px-4 py-2 rounded hover:bg-blue-100">Settings</a>
-            </nav>
-        </aside>
+  <div class="flex h-screen">
 
-        <!-- Main Content -->
-        <main class="flex-1 p-6 overflow-y-auto">
-            <header class="flex items-center justify-between mb-6">
-                <h2 class="text-3xl font-semibold">Overview</h2>
-                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">New Report</button>
-            </header>
+    <aside class="w-48 h-screen bg-white shadow-md p-6 flex flex-col">
+      <div class="flex items-center mb-8">
 
-            <!-- Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                <div class="bg-white p-4 rounded shadow">
-                    <h3 class="text-lg font-medium">Users</h3>
-                    <p class="text-2xl font-bold">-</p>
-                </div>
-                <div class="bg-white p-4 rounded shadow">
-                    <h3 class="text-lg font-medium">Revenue</h3>
-                    <p class="text-2xl font-bold">-</p>
-                </div>
-                <div class="bg-white p-4 rounded shadow">
-                    <h3 class="text-lg font-medium">Orders</h3>
-                    <p class="text-2xl font-bold">-</p>
-                </div>
-                <div class="bg-white p-4 rounded shadow">
-                    <h3 class="text-lg font-medium">Performance</h3>
-                    <p class="text-2xl font-bold">-</p>
-                </div>
+        <img th:src="@{PPD_logo.png}" alt="PPD Logo" class="w-8 h-8 mr-3 object-contain" />
+        <h1 class="text-2xl font-bold text-blue-600">PPD</h1>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="flex-1 space-y-3">
+        <!-- Home -->
+        <a href="/"
+          class="flex items-center px-4 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7m-9 2v8m0 0H5a2 2 0 01-2-2v-4m0 0h14a2 2 0 012 2v4a2 2 0 01-2 2h-6m-4 0v-8" />
+          </svg>
+          <span class="font-medium">Home</span>
+        </a>
+
+        <!-- Projects -->
+        <a href="/projects"
+          class="flex items-center px-4 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16v16H4V4zm2 2v12h12V6H6z" />
+          </svg>
+          <span class="font-medium">Projects</span>
+        </a>
+
+        <!-- Reports -->
+        <a href="/reports"
+          class="flex items-center px-4 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M8 16h8M8 12h8M8 8h5m2-3H6a2 2 0 00-2 2v14l4-4h10a2 2 0 002-2V5a2 2 0 00-2-2z" />
+          </svg>
+          <span class="font-medium">Reports</span>
+        </a>
+
+        <!-- Settings -->
+        <a href="/settings"
+          class="flex items-center px-4 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 4.354a8 8 0 016.928 4.49l.93.93a2 2 0 010 2.828l-1.414 1.414a2 2 0 01-2.828 0l-.93-.93A8 8 0 0112 19.646a8 8 0 01-6.928-4.49l-.93-.93a2 2 0 010-2.828l1.414-1.414a2 2 0 012.828 0l.93.93A8 8 0 0112 4.354z" />
+            <circle cx="12" cy="12" r="3" stroke="none" />
+          </svg>
+          <span class="font-medium">Settings</span>
+        </a>
+      </nav>
+    </aside>
+
+    <div class="flex-1 overflow-y-auto px-4 py-6">
+      <section class="mb-8">
+        <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <a href="/projects"
+            class="group bg-white border border-gray-200 rounded-lg p-5 shadow-sm hover:shadow-md transition flex items-center gap-4">
+            <div
+              class="w-10 h-10 rounded-full border border-blue-200 bg-blue-50 flex items-center justify-center text-blue-600 text-xl font-bold">
+              📁
             </div>
-        </main>
+            <div>
+              <h4 class="text-lg font-semibold text-gray-800 group-hover:text-blue-600">
+                Project Manager
+              </h4>
+              <p class="text-gray-500 text-sm">
+                Create and view all ongoing projects.
+              </p>
+            </div>
+          </a>
+
+          <a href="/reports"
+            class="group bg-white border border-gray-200 rounded-lg p-5 shadow-sm hover:shadow-md transition flex items-center gap-4">
+            <div
+              class="w-10 h-10 rounded-full border border-yellow-200 bg-yellow-50 flex items-center justify-center text-yellow-600 text-xl font-bold">
+              📝
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold text-gray-800 group-hover:text-yellow-600">
+                Reports
+              </h4>
+              <p class="text-gray-500 text-sm">
+                Submit and browse detailed reports.
+              </p>
+            </div>
+          </a>
+
+          <a href="#"
+            class="group bg-white border border-gray-200 rounded-lg p-5 shadow-sm hover:shadow-md transition flex items-center gap-4">
+            <div
+              class="w-10 h-10 rounded-full border border-gray-300 bg-gray-100 flex items-center justify-center text-gray-700 text-xl font-bold">
+              ⚙️
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold text-gray-800 group-hover:text-gray-700">
+                Settings
+              </h4>
+              <p class="text-gray-500 text-sm">
+                Customize your workspace preferences.
+              </p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="text-2xl font-bold mb-4">Statistics</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white p-5 rounded-lg border border-gray-200 shadow text-center">
+            <p class="text-sm text-gray-500 mb-1">Active Projects</p>
+            <p class="text-2xl font-bold text-blue-700">–</p>
+          </div>
+          <div class="bg-white p-5 rounded-lg border border-gray-200 shadow text-center">
+            <p class="text-sm text-gray-500 mb-1">Reports Submitted</p>
+            <p class="text-2xl font-bold text-green-600">–</p>
+          </div>
+          <div class="bg-white p-5 rounded-lg border border-gray-200 shadow text-center">
+            <p class="text-sm text-gray-500 mb-1">Team Members</p>
+            <p class="text-2xl font-bold text-purple-600">–</p>
+          </div>
+          <div class="bg-white p-5 rounded-lg border border-gray-200 shadow text-center">
+            <p class="text-sm text-gray-500 mb-1">Last Updated</p>
+            <p class="text-2xl font-bold text-gray-700">–</p>
+          </div>
+        </div>
+      </section>
     </div>
+  </div>
 </body>
 
 </html>

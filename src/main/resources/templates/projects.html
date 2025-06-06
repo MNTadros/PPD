@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title th:text="'Project: ' + ${project.name}">Project Detail</title>
+  <title>Projects</title>
   <link
     href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
     rel="stylesheet"
@@ -68,40 +68,87 @@
     </aside>
 
     <main class="flex-1 overflow-y-auto px-4 py-6">
-      <div class="bg-white rounded-lg shadow p-6 mb-6">
-        <h2 class="text-3xl font-semibold mb-4" th:text="${project.name}">Project Name</h2>
-        <p class="text-gray-700 mb-2">
-          <strong>ID:</strong> <span th:text="${project.id}">1</span>
-        </p>
-        <p class="text-gray-700 mb-2">
-          <strong>Description:</strong>
-          <span th:text="${project.description}">Project description here.</span>
-        </p>
-        <p class="text-gray-700 mb-2">
-          <strong>Tags:</strong>
-          <span th:text="${#strings.arrayJoin(project.tags, ', ')}">tag1, tag2</span>
-        </p>
-        <p class="text-gray-700 mb-2">
-          <strong>People:</strong>
-          <span th:text="${#strings.arrayJoin(project.people, ', ')}">Alice, Bob</span>
-        </p>
-      </div>
+      <h2 class="text-3xl font-semibold mb-4">Projects</h2>
 
-      <div class="bg-white rounded-lg shadow p-6">
-        <h3 class="text-2xl font-semibold mb-4">Reports for This Project</h3>
-        <div th:if="${#lists.isEmpty(project.reports)}" class="text-gray-500">
-          No reports found.
-        </div>
-        <ul>
-          <li th:each="r : ${project.reports}" class="mb-2">
-            <a th:href="@{/reports/{id}(id=${r.id})}"
-               class="text-blue-600 underline"
-               th:text="${r.title}">Report Title</a>
-            <span class="text-gray-500 text-sm ml-2" th:text="${#dates.format(r.createdAt, 'MMM d, yyyy')}">
-              (Jun 6, 2025)
-            </span>
-          </li>
-        </ul>
+      <form
+        th:action="@{/projects}"
+        method="post"
+        class="mb-6 grid grid-cols-1 md:grid-cols-5 gap-3"
+      >
+        <input
+          type="text"
+          name="name"
+          placeholder="Project Name"
+          required
+          class="px-2 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+        />
+        <input
+          type="text"
+          name="description"
+          placeholder="Description"
+          required
+          class="px-2 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+        />
+        <input
+          type="text"
+          name="tags"
+          placeholder="Tags (comma separated)"
+          class="px-2 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+        />
+        <input
+          type="text"
+          name="people"
+          placeholder="People (comma separated)"
+          class="px-2 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+        />
+        <button
+          type="submit"
+          class="bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700 transition"
+        >
+          Add
+        </button>
+      </form>
+
+      <div class="bg-white rounded-lg shadow p-3 overflow-x-auto">
+        <table class="w-full table-fixed border-collapse border border-gray-200 text-sm">
+          <thead class="bg-gray-100 text-left font-semibold text-gray-700">
+            <tr>
+              <th class="w-1/5 px-3 py-2 border">ID</th>
+              <th class="w-1/5 px-3 py-2 border">Name</th>
+              <th class="w-1/5 px-3 py-2 border">Description</th>
+              <th class="w-1/5 px-3 py-2 border">Tags</th>
+              <th class="w-1/5 px-3 py-2 border">People</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              th:each="project : ${projects}"
+              class="hover:bg-gray-50 cursor-pointer"
+              th:onclick="|window.location.href='@{/project/{id}(id=${project.id})}'|"
+            >
+              <td
+                th:text="${project.id}"
+                class="px-3 py-2 border break-words"
+              ></td>
+              <td
+                th:text="${project.name}"
+                class="px-3 py-2 border break-words"
+              ></td>
+              <td
+                th:text="${project.description}"
+                class="px-3 py-2 border break-words"
+              ></td>
+              <td
+                th:text="${#strings.arrayJoin(project.tags, ', ')}"
+                class="px-3 py-2 border text-gray-600 break-words"
+              ></td>
+              <td
+                th:text="${#strings.arrayJoin(project.people, ', ')}"
+                class="px-3 py-2 border text-gray-600 break-words"
+              ></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </main>
   </div>
