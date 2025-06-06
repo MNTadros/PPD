@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reports</title>
-  <link
-    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-    rel="stylesheet"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="icon" th:href="@{/PPD_logo.png}" type="image/x-icon" />
 </head>
+
 <body class="bg-gray-100 min-h-screen font-sans text-gray-800">
   <div class="flex h-screen">
 
@@ -68,44 +68,38 @@
     </aside>
 
     <main class="flex-1 overflow-y-auto px-4 py-6">
-        <header class="flex items-center justify-between mb-8">
-          <h2 class="text-3xl font-semibold">Project Reports</h2>
-          <a
-            href="/reports/new"
-            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-          >
-            + New Report
-          </a>
-        </header>
+      <header class="flex items-center justify-between mb-8">
+        <h2 class="text-3xl font-semibold">Project Reports</h2>
+        <a href="/reports/new" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+          + New Report
+        </a>
+      </header>
 
-        <div class="bg-white rounded-lg shadow p-4 overflow-x-auto">
-          <table class="w-full table-auto border border-gray-200">
-            <thead class="bg-gray-100 text-left text-sm font-semibold text-gray-700">
-              <tr>
-                <th class="px-4 py-2 border">ID</th>
-                <th class="px-4 py-2 border">Title</th>
-                <th class="px-4 py-2 border">Project</th>
-                <th class="px-4 py-2 border">Google Doc</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr th:each="report : ${reports}" class="hover:bg-gray-50">
-                <td th:text="${report.id}" class="px-4 py-2 border"></td>
-                <td th:text="${report.title}" class="px-4 py-2 border"></td>
-                <td th:text="${report.project.name}" class="px-4 py-2 border"></td>
-                <td class="px-4 py-2 border">
-                  <a
-                    th:href="${report.googleDocLink}"
-                    th:text="${report.googleDocLink}"
-                    class="text-blue-600 underline"
-                    target="_blank"
-                  ></a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="bg-white rounded-lg shadow p-4 overflow-x-auto">
+        <table class="w-full table-auto border border-gray-200">
+          <thead class="bg-gray-100 text-left text-sm font-semibold text-gray-700">
+            <tr>
+              <th class="px-4 py-2 border">ID</th>
+              <th class="px-4 py-2 border">Title</th>
+              <th class="px-4 py-2 border">Project</th>
+              <th class="px-4 py-2 border">Google Doc</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="report : ${reports}" class="hover:bg-gray-50">
+              <td th:text="${report.id}" class="px-4 py-2 border"></td>
+              <td th:text="${report.title}" class="px-4 py-2 border"></td>
+              <td th:text="${report.project.name}" class="px-4 py-2 border"></td>
+              <td class="px-4 py-2 border">
+                <a th:href="${report.googleDocLink}" th:text="${report.googleDocLink}" class="text-blue-600 underline"
+                  target="_blank"></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </main>
   </div>
 </body>
+
 </html>

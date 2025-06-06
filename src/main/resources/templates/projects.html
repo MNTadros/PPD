@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects</title>
-  <link
-    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-    rel="stylesheet"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="icon" th:href="@{/PPD_logo.png}" type="image/x-icon" />
 </head>
+
 <body class="bg-gray-100 min-h-screen font-sans text-gray-800">
   <div class="flex h-screen">
 
@@ -70,41 +70,16 @@
     <main class="flex-1 overflow-y-auto px-4 py-6">
       <h2 class="text-3xl font-semibold mb-4">Projects</h2>
 
-      <form
-        th:action="@{/projects}"
-        method="post"
-        class="mb-6 grid grid-cols-1 md:grid-cols-5 gap-3"
-      >
-        <input
-          type="text"
-          name="name"
-          placeholder="Project Name"
-          required
-          class="px-2 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
-        />
-        <input
-          type="text"
-          name="description"
-          placeholder="Description"
-          required
-          class="px-2 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
-        />
-        <input
-          type="text"
-          name="tags"
-          placeholder="Tags (comma separated)"
-          class="px-2 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
-        />
-        <input
-          type="text"
-          name="people"
-          placeholder="People (comma separated)"
-          class="px-2 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
-        />
-        <button
-          type="submit"
-          class="bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700 transition"
-        >
+      <form th:action="@{/projects}" method="post" class="mb-6 grid grid-cols-1 md:grid-cols-5 gap-3">
+        <input type="text" name="name" placeholder="Project Name" required
+          class="px-2 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500" />
+        <input type="text" name="description" placeholder="Description" required
+          class="px-2 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500" />
+        <input type="text" name="tags" placeholder="Tags (comma separated)"
+          class="px-2 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500" />
+        <input type="text" name="people" placeholder="People (comma separated)"
+          class="px-2 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500" />
+        <button type="submit" class="bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700 transition">
           Add
         </button>
       </form>
@@ -121,31 +96,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr
-              th:each="project : ${projects}"
-              class="hover:bg-gray-50 cursor-pointer"
-              th:onclick="|window.location.href='@{/project/{id}(id=${project.id})}'|"
-            >
-              <td
-                th:text="${project.id}"
-                class="px-3 py-2 border break-words"
-              ></td>
-              <td
-                th:text="${project.name}"
-                class="px-3 py-2 border break-words"
-              ></td>
-              <td
-                th:text="${project.description}"
-                class="px-3 py-2 border break-words"
-              ></td>
-              <td
-                th:text="${#strings.arrayJoin(project.tags, ', ')}"
-                class="px-3 py-2 border text-gray-600 break-words"
-              ></td>
-              <td
-                th:text="${#strings.arrayJoin(project.people, ', ')}"
-                class="px-3 py-2 border text-gray-600 break-words"
-              ></td>
+            <tr th:each="project : ${projects}" class="hover:bg-gray-50 cursor-pointer"
+              th:onclick="|window.location.href='@{/project/{id}(id=${project.id})}'|">
+              <td th:text="${project.id}" class="px-3 py-2 border break-words"></td>
+              <td th:text="${project.name}" class="px-3 py-2 border break-words"></td>
+              <td th:text="${project.description}" class="px-3 py-2 border break-words"></td>
+              <td th:text="${#strings.arrayJoin(project.tags, ', ')}"
+                class="px-3 py-2 border text-gray-600 break-words"></td>
+              <td th:text="${#strings.arrayJoin(project.people, ', ')}"
+                class="px-3 py-2 border text-gray-600 break-words"></td>
             </tr>
           </tbody>
         </table>
@@ -153,4 +112,5 @@
     </main>
   </div>
 </body>
+
 </html>

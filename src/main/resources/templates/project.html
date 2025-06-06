@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title th:text="'Project: ' + ${project.name}">Project Detail</title>
-  <link
-    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-    rel="stylesheet"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="icon" th:href="@{/PPD_logo.png}" type="image/x-icon" />
 </head>
+
 <body class="bg-gray-100 min-h-screen font-sans text-gray-800">
   <div class="flex h-screen">
 
@@ -94,9 +94,8 @@
         </div>
         <ul>
           <li th:each="r : ${project.reports}" class="mb-2">
-            <a th:href="@{/reports/{id}(id=${r.id})}"
-               class="text-blue-600 underline"
-               th:text="${r.title}">Report Title</a>
+            <a th:href="@{/reports/{id}(id=${r.id})}" class="text-blue-600 underline" th:text="${r.title}">Report
+              Title</a>
             <span class="text-gray-500 text-sm ml-2" th:text="${#dates.format(r.createdAt, 'MMM d, yyyy')}">
               (Jun 6, 2025)
             </span>
@@ -106,4 +105,5 @@
     </main>
   </div>
 </body>
+
 </html>

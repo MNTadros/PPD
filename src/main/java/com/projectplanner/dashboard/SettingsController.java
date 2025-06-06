@@ -9,7 +9,6 @@ public class SettingsController {
 
     @GetMapping("/settings")
     public String settingsPage(Model model) {
-        // any settings‐specific data can go into the model here
-        return "settings";   // <-- must match settings.html
+        return "settings";   
     }
 }
