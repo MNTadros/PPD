@@ -55,13 +55,12 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authenticationProvider(authenticationProvider())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/signup", "/login", "/css/**", "/js/**").permitAll()
+                        .requestMatchers("/", "/signup", "/login", "/css/**", "/js/**", "/imgs/**").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(login -> login
                         .loginPage("/login")
-                        .defaultSuccessUrl("/", true) 
-                        .permitAll()
-                )
+                        .defaultSuccessUrl("/", true)
+                        .permitAll())
                 .logout(logout -> logout
                         .logoutSuccessUrl("/login")
                         .permitAll());
