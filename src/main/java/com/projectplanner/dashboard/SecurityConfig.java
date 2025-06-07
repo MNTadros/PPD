@@ -55,7 +55,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authenticationProvider(authenticationProvider())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/signup", "/login", "/css/**", "/js/**", "/imgs/**").permitAll()
+                        .requestMatchers("/", "/signup", "/login", "/css/**", "/js/**", "/PPD_logo.png").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(login -> login
                         .loginPage("/login")
